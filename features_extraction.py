@@ -4,9 +4,10 @@ from keras.models import Model
 from efficientnet.tfkeras import *
 from keras.preprocessing.image import load_img, img_to_array
 
-IMG_DIR = 'C:\\Users\\ilija\\OneDrive\\Desktop\\ANN\\dataset\\Images'
+IMG_DIR = '../dataset/Images/'
 
-def extract_features_effnet(version, directory):
+
+def extract_features_effnet(version, images):
     configurations_for_effnet_version = {
         "effnetb0": {
             "img_size": 224,
@@ -47,8 +48,9 @@ def extract_features_effnet(version, directory):
     model = Model(inputs=model.inputs, outputs=model.layers[-1].output)
     print(model.summary())
     features = dict()
-    for name in listdir(directory)[:10]:    # proof of concept on the first 10 images
-        filename = directory + '/' + name
+    for name in images:
+    # for name in listdir(directory)[:10]:    # proof of concept on the first 10 images
+        filename = IMG_DIR + name
         img_size = configurations_for_effnet_version[version]['img_size']
         image = load_img(filename, target_size=(img_size, img_size))
         image = img_to_array(image)

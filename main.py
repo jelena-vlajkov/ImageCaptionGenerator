@@ -5,6 +5,7 @@ from features_extraction import extract_features_effnet
 
 DATASET_PATH = '../dataset/captions.txt'
 EFF_NET_CONV_TEST = '../dataset/eff_net_conv_test.pkl'
+EFF_NET_CONV_TRAIN = '../dataset/eff_net_conv_train.pkl'
 
 
 def extract_features(images: pd.Series, model='eff_net'):
